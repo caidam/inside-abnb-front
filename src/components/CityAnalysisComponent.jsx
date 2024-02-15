@@ -4,6 +4,7 @@ import KpiSectionComponent from './KpiSectionComponent';
 import { HBarChartComponent } from './HBarChartComponent';
 import DonutChartComponent from './DonutChartComponent';
 import BarChartComponent from './BarChartComponent';
+import DataTable from './DataTable';
 
 export default function CityAnalysisComponent() {
   const cityKpis = useContext(CityKpisContext);
@@ -162,9 +163,11 @@ export default function CityAnalysisComponent() {
       />
       <KpiSectionComponent
         title="Top Hosts"
-        text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. ..."
-        kpis={<div>KPIs 1</div>}
-        graph={<div>Graph 1</div>}
+        text=""
+        kpis={<div></div>}
+        graph={<div>
+          <DataTable apiUrl="https://caidam.freeddns.org/5_listings" />
+        </div>}
       />
     </div>
 

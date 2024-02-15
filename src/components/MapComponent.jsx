@@ -40,8 +40,13 @@ const MapComponent = ({ selectedCity, selectedNeighbourhood }) => {
   const [mapCenter, setMapCenter] = useState([48.8588897, 2.3200410217200766]);
   const [markers, setMarkers] = useState([]);
 
+  // Add a new state variable for tracking loading state
+  const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
     const fetchDataAndSetMapCenter = async () => {
+      setIsLoading(true); // Set loading to true at the start
+      
       const controller = new AbortController();
       const signal = controller.signal;
   
@@ -80,10 +85,13 @@ const MapComponent = ({ selectedCity, selectedNeighbourhood }) => {
           setMarkers([]);
         }
       }
-  
+      
+      setIsLoading(false); // Set loading to false once data has been fetched
+      
       return () => {
         controller.abort();
       };
+
     };
   
     fetchDataAndSetMapCenter();
@@ -91,7 +99,18 @@ const MapComponent = ({ selectedCity, selectedNeighbourhood }) => {
 
   console.log('Map Component Rendered');
 
-  return (
+return (
+  <>
+      {isLoading && (
+        <div className="map-overlay">
+          {/* <div className="loading-overlay">Loading...</div> */}
+          <div className="lds-ripple">
+            <div></div>
+            <div></div>
+          </div>
+        </div>
+      )}
+
     <MapContainer center={mapCenter} zoom={13}>
       <ChangeView center={mapCenter} />
       <TileLayer
@@ -106,34 +125,35 @@ const MapComponent = ({ selectedCity, selectedNeighbourhood }) => {
           icon={getCustomIcon(marker.room_type)}
         >
           <Popup className='customPopup'>
-            <div className='popUpdiv'>
-              <div className='popUpTop'>
-                <h3>
-                  <a className='popup-link' href=''>{marker.name}</a> by
-                </h3>
-                <h3>
-                  <a className='popup-link' href=''>{marker.host_name}</a>
-                </h3>
-                <p style={{ display: 'flex', alignItems: 'center' }} >
-                  <img
-                    src={getCustomIcon(marker.room_type).options.iconUrl}
-                    alt='Room Type Icon'
-                    style={{ width: '16px', marginRight: '5px', verticalAlign: 'middle' }}
-                  />
-                  - {marker.room_type} | {marker.neighbourhood}
-                </p>
-              </div>
-              <div className='popUpBottom'>
-                <p>{marker.number_of_reviews_ltm} reviews last yr ({marker.reviews_per_month} reviews per month)</p>
-                <p>@{marker.price} per night, {marker.minimum_nights} min nights</p>
-                <p>{marker.host_name} has {marker.calculated_host_listings_count} listing(s) on Airbnb in this region</p>
-              </div>
-            </div>
+                <div className='popUpdiv'>
+                  <div className='popUpTop'>
+                    <h3>
+                      <a className='popup-link' href=''>{marker.name}</a> by
+                    </h3>
+                    <h3>
+                      <a className='popup-link' href=''>{marker.host_name}</a>
+                    </h3>
+                    <p style={{ display: 'flex', alignItems: 'center' }} >
+                      <img
+                        src={getCustomIcon(marker.room_type).options.iconUrl}
+                        alt='Room Type Icon'
+                        style={{ width: '16px', marginRight: '5px', verticalAlign: 'middle' }}
+                      />
+                      - {marker.room_type} | {marker.neighbourhood}
+                    </p>
+                  </div>
+                  <div className='popUpBottom'>
+                    <p>{marker.number_of_reviews_ltm} reviews last yr ({marker.reviews_per_month} reviews per month)</p>
+                    <p>@{marker.price} per night, {marker.minimum_nights} min nights</p>
+                    <p>{marker.host_name} has {marker.calculated_host_listings_count} listing(s) on Airbnb in this region</p>
+                  </div>
+                </div>
           </Popup>
         </Marker>
       ))}
     </MapContainer>
-  );
+  </>
+);
 };
 
 export default MapComponent;

@@ -27,6 +27,7 @@ export const options = {
     },
   },
   responsive: true,
+  maintainAspectRatio: false, // Set to false for responsive behavior
   plugins: {
     legend: {
       display: false,
