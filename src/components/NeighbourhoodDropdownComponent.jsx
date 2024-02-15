@@ -1,9 +1,9 @@
-// NeighbourhoodDropdownComponent.jsx
 import React, { useState, useEffect } from 'react';
+import Select from 'react-select';
 
 const NeighbourhoodDropdownComponent = ({ selectedCity = 'Paris', onNeighbourhoodChange }) => {
-  const [Neighbourhoods, setNeighbourhoods] = useState([]);
-  const [selectedNeighbourhood, setSelectedNeighbourhood] = useState('Total'); // Set default selected neighbourhood to empty string
+  const [neighbourhoods, setNeighbourhoods] = useState([]);
+  const [selectedNeighbourhood, setSelectedNeighbourhood] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -21,28 +21,28 @@ const NeighbourhoodDropdownComponent = ({ selectedCity = 'Paris', onNeighbourhoo
     fetchData();
   }, [selectedCity]);
 
-  const handleNeighbourhoodChange = (event) => {
-    const selectedNeighbourhood = event.target.value;
-    setSelectedNeighbourhood(selectedNeighbourhood);
-    onNeighbourhoodChange(selectedNeighbourhood);
-    console.log('Selected Neighbourhood:', selectedNeighbourhood);
+  const handleNeighbourhoodChange = (selectedOption) => {
+    setSelectedNeighbourhood(selectedOption);
+    onNeighbourhoodChange(selectedOption.value);
+    console.log('Selected Neighbourhood:', selectedOption.value);
   };
 
   console.log('NeighbourhoodDropdownComponent rendered');
 
   return (
     <>
-      {Neighbourhoods.length > 0 && (
+      {neighbourhoods.length > 0 && (
         <div>
           <label htmlFor="NeighbourhoodDropdown">Select a Neighbourhood:</label>
-          <select id="NeighbourhoodDropdown" value={selectedNeighbourhood} onChange={handleNeighbourhoodChange}>
-        {/*  <option value="" disabled>Select a neighbourhood</option> {/* Add this line */}
-            {Neighbourhoods.map((Neighbourhood) => (
-              <option key={Neighbourhood.id} value={Neighbourhood.neighbourhood}>
-                {Neighbourhood.neighbourhood}
-              </option>
-            ))}
-          </select>
+          <Select
+            id="NeighbourhoodDropdown"
+            value={selectedNeighbourhood}
+            onChange={handleNeighbourhoodChange}
+            options={neighbourhoods.map((neighbourhood) => ({
+              label: neighbourhood.neighbourhood,
+              value: neighbourhood.neighbourhood,
+            }))}
+          />
         </div>
       )}
     </>
