@@ -36,9 +36,7 @@ function App() {
           <MainKpisComponent/>
 
         </div>
-        <div className='RSContent'>
           <CityAnalysisComponent/>
-        </div>
       </div>
     </CityKpisProvider>
   )

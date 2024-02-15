@@ -1,0 +1,29 @@
+/* KpiSectionComponent.css */
+.kpi-section {
+    margin-bottom: 10px;
+    padding: 10px;
+  }
+  
+  .kpi-section-title {
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 10px;
+  }
+  
+  .kpi-section-content {
+    display: flex;
+    flex-direction: column; /* Stack the columns vertically */
+  }
+  
+  .kpi-section-columns {
+    display: flex;
+  }
+  
+  .kpi-section-column {
+    flex: 1;
+    margin-right: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .kpi-section-text {
+    flex: 2; /* Adjust the width of the text column as needed */
+  }

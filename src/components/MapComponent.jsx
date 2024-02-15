@@ -14,19 +14,24 @@ const ChangeView = ({ center }) => {
   return null;
 };
 
+const redIcon = new Icon({ iconUrl: redDot, iconSize: [16, 16] });
+const blueIcon = new Icon({ iconUrl: blueDot, iconSize: [16, 16] });
+const greenIcon = new Icon({ iconUrl: greenDot, iconSize: [16, 16] });
+const blackIcon = new Icon({ iconUrl: blackDot, iconSize: [16, 16] });
+
 const getCustomIcon = (roomType) => {
   switch (roomType) {
     case 'Entire home/apt':
-      return new Icon({ iconUrl: redDot, iconSize: [16, 16] });
+      return redIcon;
     case 'Shared room':
-      return new Icon({ iconUrl: blueDot, iconSize: [16, 16] });
+      return blueIcon;
     case 'Private room':
-      return new Icon({ iconUrl: greenDot, iconSize: [16, 16] });
+      return greenIcon;
     case 'Hotel room':
-      return new Icon({ iconUrl: blackDot, iconSize: [16, 16] });
+      return blackIcon;
     // Add more cases for other room types and icons
     default:
-      return new Icon({ iconUrl: redDot, iconSize: [16, 16] });
+      return redIcon;
   }
 };
 
@@ -109,7 +114,14 @@ const MapComponent = ({ selectedCity, selectedNeighbourhood }) => {
                 <h3>
                   <a className='popup-link' href=''>{marker.host_name}</a>
                 </h3>
-                <p>{marker.room_type} - {marker.neighbourhood}</p>
+                <p style={{ display: 'flex', alignItems: 'center' }} >
+                  <img
+                    src={getCustomIcon(marker.room_type).options.iconUrl}
+                    alt='Room Type Icon'
+                    style={{ width: '16px', marginRight: '5px', verticalAlign: 'middle' }}
+                  />
+                  - {marker.room_type} | {marker.neighbourhood}
+                </p>
               </div>
               <div className='popUpBottom'>
                 <p>{marker.number_of_reviews_ltm} reviews last yr ({marker.reviews_per_month} reviews per month)</p>

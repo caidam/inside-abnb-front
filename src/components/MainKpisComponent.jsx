@@ -6,7 +6,6 @@ export default function MainKpisComponent() {
 
   return (
     <div>
-
       <p> {cityKpis.total_listings}</p>
       <p> out of {cityKpis.total_listings_city} listings ({cityKpis.listing_proportion}%) </p>
     </div>
