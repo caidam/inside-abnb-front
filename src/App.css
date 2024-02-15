@@ -1,0 +1,33 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  height: 100vh;
+  position: relative;
+}
+
+.navbar-component {
+  height: 10%;
+}
+
+.RightSection {
+  top: 10%;
+  left: 60%;
+  background-color: beige;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.RSTitle {
+  height: 15%;
+  background-color: bisque;
+}

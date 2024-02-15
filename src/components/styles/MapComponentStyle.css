@@ -1,0 +1,65 @@
+
+
+/* MapComponent */
+
+/* height of the map container */
+.leaflet-container {
+    height: 90%;
+    width: 60%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+
+
+
+/* Pop Up Styles */
+/* Customize the style of the popup container */
+.customPopup .leaflet-popup-tip,
+.customPopup .leaflet-popup-content-wrapper {
+    background: white;
+    opacity: 0.85;
+    border: none; 
+    border-radius: 5px;
+    box-shadow: none;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Style for the top section of the popup */
+.popUpTop {
+border-bottom: 1px solid #ccc; /* Add a border at the bottom of the top section */
+}
+
+/* Style for the bottom section of the popup */
+.popUpBottom {
+padding: 10px; /* Adjust the padding as needed */
+}
+
+/* Style for the heading in the top section */
+.popUpTop h2 {
+margin-bottom: 5px; /* Adjust the margin as needed */
+}
+
+/* Style for the paragraphs in both sections */
+.popUpTop p,
+.popUpBottom p {
+margin: 5px 0; /* Adjust the margin as needed */
+}
+
+a.popup-link {
+    color: #1396d9; /* Electric blue color */
+    text-decoration: none; /* Remove underline */
+    }
+      
+a.popup-link:hover {
+text-decoration: underline; /* Add underline on hover if desired */
+}
+
+/* Media query for responsiveness */
+@media screen and (max-width: 600px) {
+.leaflet-popup-content-wrapper {
+    width: 80%; /* Adjust the width as needed for smaller screens */
+}
+}
+
