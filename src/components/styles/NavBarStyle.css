@@ -19,12 +19,14 @@ h1 {
     margin: 0;
     /* padding-left: 2%; */
     font-weight: bold; /* Make the font bolder */
+    color: #0f325a;
 }
 
 small {
     display: block;
     font-size: 0.8em;
     margin-top: 2px; /* Adjust margin-top to provide space between h1 and small */
+    color: #0f325a;
     /* padding-left: 2%; */
     /* font-weight: bold; */
 }

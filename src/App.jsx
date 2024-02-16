@@ -35,7 +35,7 @@ function App() {
           alignItems: 'center', 
           padding: '20px', 
           color: '#4b4b4b'
-          }}>
+        }}>
           <div style={{ marginRight: '30px', width: '300px' }}>
           <CityDropdownComponent onCityChange={handleCityChange} style={{width: '100%'}}/>
             
