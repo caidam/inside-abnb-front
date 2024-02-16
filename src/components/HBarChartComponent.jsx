@@ -54,7 +54,7 @@ export const options = {
 };
 
 const labels = ['Entire home/apt', 'Private room', 'Shared room', 'Hotel room'];
-const colors = ['rgb(255, 99, 132)', 'rgb(54, 162, 235)', 'rgb(255, 206, 86)', 'rgb(75, 192, 192)'];
+const colors = ['#dc3545', '#20c997', '#0dcaf0', '#495057'];
 
 export function HBarChartComponent({ data }) {
   const datasets = [{

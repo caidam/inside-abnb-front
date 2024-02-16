@@ -1,9 +1,10 @@
 .App {
-  font-family: sans-serif;
+  /* font-family: sans-serif; */
   text-align: center;
 }
 
 * {
+  font-family: "Lato", arial;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -11,29 +12,70 @@
 
 #root {
   height: 100vh;
+  min-height: auto; /* Minimum height */
+  min-width: auto; /* Minimum width */
   position: relative;
 }
 
 .navbar-component {
   height: 10%;
+  min-height: 80px;
 }
 
 .RightSection {
   top: 10%;
   left: 60%;
-  background-color: beige;
+  background-color: #f8f9fa;
   position: absolute;
   bottom: 0;
   right: 0;
 }
 
 .RSTitle {
-  height: 15%;
-  background-color: bisque;
+  height: 20%;
+  background-color: #e9ecef;
 }
 
 .RSContent {
-  height: 75%;
+  height: 70%;
   overflow-y: auto;
   padding: 10px;
 }
+
+
+/* .map-component {
+
+} */
+
+@media screen and (max-width: 600px) {
+  .navbar-component,
+  .RightSection,
+  .map-component {
+    width: 100%; 
+    position: relative; 
+    left: 0; 
+  }
+
+  .navbar-component {
+    max-height: 80px; 
+  }
+
+  .RightSection {
+    top: unset; 
+  }
+
+  .leaflet-container {
+    position: relative; 
+    height: 300px;
+    width: 100%; 
+  }
+
+  .RSContent {
+    height: 50%;
+    overflow-y: auto;
+    padding: 10px;
+    margin-bottom: 10px; /* Add some margin at the bottom */
+  }
+} 
+
+

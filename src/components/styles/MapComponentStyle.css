@@ -124,7 +124,17 @@ text-decoration: underline; /* Add underline on hover if desired */
 /* Media query for responsiveness */
 @media screen and (max-width: 600px) {
 .leaflet-popup-content-wrapper {
-    width: 80%; /* Adjust the width as needed for smaller screens */
+    width: 80%; 
+};
+.leaflet-container {
+  height: 300px; /* Set a specific height */
+  width: 100%; /* Set width to 100% */
 }
+
+.map-overlay {
+  width: 100%; /* Set width to 100% */
+  height: 300px; /* Set a specific height */
+}
+
 }
 

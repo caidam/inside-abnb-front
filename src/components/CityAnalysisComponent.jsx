@@ -5,6 +5,7 @@ import { HBarChartComponent } from './HBarChartComponent';
 import DonutChartComponent from './DonutChartComponent';
 import BarChartComponent from './BarChartComponent';
 import DataTable from './DataTable';
+import "./styles/CityAnalysisComponent.css";
 
 export default function CityAnalysisComponent() {
   const cityKpis = useContext(CityKpisContext);
@@ -22,20 +23,28 @@ export default function CityAnalysisComponent() {
         }
         kpis={
           <div>
-            <p>{cityKpis.entire_home_apt_proportion}%</p>
-            <p>entire homes/apartments</p>
+            <p className='mainkpi'
+            >{cityKpis.entire_home_apt_proportion}%</p>
+            <p className='subheading'
+            >entire homes/apartments</p>
 
-            <p>{cityKpis.entire_home_apt} ({cityKpis.entire_home_apt_proportion}%)</p>
-            <p>entire home/apartments</p>
+            <p className='subkpi'
+            >{cityKpis.entire_home_apt} ({cityKpis.entire_home_apt_proportion}%)</p>
+            <p
+              className='subheading'
+            >entire home/apartments</p>
 
-            <p>{cityKpis.private_rooms} ({cityKpis.private_rooms_proportion}%)</p>
-            <p>private rooms</p>
+            <p className='subkpi'
+            >{cityKpis.private_rooms} ({cityKpis.private_rooms_proportion}%)</p>
+            <p
+              className='subheading'
+            >private rooms</p>
 
-            <p>{cityKpis.shared_rooms} ({cityKpis.shared_rooms_proportion}%)</p>
-            <p>shared rooms</p>
+            <p className='subkpi'>{cityKpis.shared_rooms} ({cityKpis.shared_rooms_proportion}%)</p>
+            <p className='subheading'>shared rooms</p>
 
-            <p>{cityKpis.hotel_rooms} ({cityKpis.hotel_rooms_proportion}%)</p>
-            <p>hotel rooms</p>
+            <p className='subkpi'>{cityKpis.hotel_rooms} ({cityKpis.hotel_rooms_proportion}%)</p>
+            <p className='subheading'>hotel rooms</p>
           </div>
         }
         graph={<div> 
@@ -54,17 +63,26 @@ export default function CityAnalysisComponent() {
         }
         kpis={
           <div>
-            <p>{cityKpis.average_nights_booked}</p>
-            <p>average nights booked</p>
+            <p className='mainkpi'>{cityKpis.average_nights_booked}</p>
+            <p className='subheading'>average nights booked</p>
 
-            <p>{cityKpis.price_per_night} (in local currency)</p>
-            <p>price/nights</p>
+            <p className='subkpi'>{cityKpis.price_per_night} (in local currency)</p>
+            <p className='subheading'>price/nights</p>
 
-            <p>{cityKpis.average_income} (in local currency)</p>
-            <p>average income</p>
+            <p className='subkpi'>{cityKpis.average_income} (in local currency)</p>
+            <p className='subheading'>average income</p>
           </div>
         }
-        graph={<div>Graph 1</div>}
+        graph={
+          <div>
+
+            <BarChartComponent 
+            
+            labels = {['0', '1-60', '60-120', '120-180', '180-240', '240+']} 
+            colors = {['#0058b7', '#0058b7', '#0058b7', '#0058b7', '#0058b7', '#0058b7']}
+            values = {[cityKpis.avilability_0, cityKpis.avilability_1_60, cityKpis.avilability_60_120, cityKpis.avilability_120_180, cityKpis.avilability_180_240, cityKpis.avilability_240p]}
+            />
+          </div>}
       />
       <KpiSectionComponent
         title="Licenses"
@@ -77,27 +95,27 @@ export default function CityAnalysisComponent() {
         }
         kpis={
           <div>
-            <p>{cityKpis.unlicensed_proportion}%</p>
-            <p>unlicensed</p>
+            <p className='mainkpi'>{cityKpis.unlicensed_proportion}%</p>
+            <p className='subheading'>unlicensed</p>
 
-            <p>{cityKpis.unlicensed} ({cityKpis.unlicensed_proportion}%)</p>
-            <p>unlicensed</p>
+            <p className='subkpi'>{cityKpis.unlicensed} ({cityKpis.unlicensed_proportion}%)</p>
+            <p className='subheading'>unlicensed</p>
 
-            <p>{cityKpis.licensed} ({cityKpis.licensed_proportion}%)</p>
-            <p>licensed</p>
+            <p className='subkpi'>{cityKpis.licensed} ({cityKpis.licensed_proportion}%)</p>
+            <p className='subheading'>licensed</p>
 
-            <p>{cityKpis.exempt} ({cityKpis.exempt_proportion}%)</p>
-            <p>exempt</p>
+            <p className='subkpi'>{cityKpis.exempt} ({cityKpis.exempt_proportion}%)</p>
+            <p className='subheading'>exempt</p>
 
-            <p>{cityKpis.pending} ({cityKpis.pending_proportion}%)</p>
-            <p>pending</p>
+            <p className='subkpi'>{cityKpis.pending} ({cityKpis.pending_proportion}%)</p>
+            <p className='subheading'>pending</p>
           </div>
         }
         graph={<div>
           <BarChartComponent 
           
           labels = {['unlicensed', 'licensed', 'exempt', 'pending']} 
-          colors = {['#0d6efd', '#afc6e8', '#fd7e14', '#ffc107']}
+          colors = {['#0d6efd', '#afc6e8', '#afc6e8', '#afc6e8']}
           values = {[cityKpis.unlicensed, cityKpis.licensed, cityKpis.exempt, cityKpis.pending]}
           />
         </div>}
@@ -115,14 +133,14 @@ export default function CityAnalysisComponent() {
         }
         kpis={
           <div>
-            <p>{cityKpis.short_term_rentals_proportion}%</p>
-            <p>short-term rentals</p>
+            <p className='mainkpi'>{cityKpis.short_term_rentals_proportion}%</p>
+            <p className='subheading'>short-term rentals</p>
 
-            <p>{cityKpis.short_term_rentals} ({cityKpis.short_term_rentals_proportion}%)</p>
-            <p>short-term rentals</p>
+            <p className='subkpi'>{cityKpis.short_term_rentals} ({cityKpis.short_term_rentals_proportion}%)</p>
+            <p className='subheading'>short-term rentals</p>
 
-            <p>{cityKpis.longer_term_rentals} ({cityKpis.longer_term_rentals_proportion}%)</p>
-            <p>longer-term rentals</p>
+            <p className='subkpi'>{cityKpis.longer_term_rentals} ({cityKpis.longer_term_rentals_proportion}%)</p>
+            <p className='subheading'>longer-term rentals</p>
           </div>
         }
         graph={<div>
@@ -149,17 +167,25 @@ export default function CityAnalysisComponent() {
         }
         kpis={
           <div>
-            <p>TBC {}%</p>
-            <p>multi-listings</p>
+            <p className='mainkpi'>{cityKpis.multiple_listings_proportion}%</p>
+            <p className='subheading'>multi-listings</p>
 
-            <p>TBC {} ({}%)</p>
-            <p>single listings</p>
+            <p className='subkpi'>{cityKpis.single_listings} ({cityKpis.single_listings_proportion}%)</p>
+            <p className='subheading'>single listings</p>
 
-            <p>TBC {} ({}%)</p>
-            <p>multi-listings</p>
+            <p className='subkpi'>{cityKpis.multiple_listings} ({cityKpis.multiple_listings_proportion}%)</p>
+            <p className='subheading'>multi-listings</p>
           </div>
         }
-        graph={<div>Graph 1</div>}
+        graph={
+          <div>
+          <BarChartComponent 
+          
+          labels = {['1', '2-10', '10-20', '20-30', '30+']} 
+          colors = {['#0d6efd', '#0058b7', '#4281ef', '#91a8fa', '#dc3545']}
+          values = {[cityKpis.single_listings, cityKpis.listings_2_10, cityKpis.listings_10_20, cityKpis.listings_20_30, cityKpis.listings_30p]}
+          />
+          </div>}
       />
       <KpiSectionComponent
         title="Top Hosts"

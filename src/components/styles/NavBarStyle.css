@@ -17,12 +17,21 @@ nav {
 
 h1 {
     margin: 0;
-    padding-left: 2%;
+    /* padding-left: 2%; */
+    font-weight: bold; /* Make the font bolder */
 }
 
 small {
     display: block;
     font-size: 0.8em;
     margin-top: 2px; /* Adjust margin-top to provide space between h1 and small */
-    padding-left: 2%;
+    /* padding-left: 2%; */
+    /* font-weight: bold; */
+}
+
+nav a {
+    text-decoration: none; /* Remove underline */
+    color: inherit; /* Inherit color from parent */
+    white-space: nowrap; /* Prevent text from wrapping */
+    overflow: hidden; /* Hide overflowing text */
 }

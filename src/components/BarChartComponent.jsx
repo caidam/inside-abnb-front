@@ -22,6 +22,19 @@ function BarChartComponent({labels, colors, values}) {
                 // position: 'right',
             },
         },
+        scales: {
+            y: {
+                grid: {
+                  drawOnChartArea: false, // This will prevent the grid lines from being drawn on the chart area
+                },
+            },
+            x: {
+              grid: {
+                drawOnChartArea: false, // This will hide the grid lines for the x-axis
+              },
+            },
+      },
+        
     };
 
     return <Bar data={chartData} options={options} />;
