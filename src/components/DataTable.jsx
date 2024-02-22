@@ -26,7 +26,7 @@ const DataTable = ({ apiUrl }) => {
 
   return (
     <div style={{ height: 400, width: '100%' }}>
-      <DataGrid rows={data} columns={columns} pageSize={5} />
+      <DataGrid rows={data} columns={columns} pageSize={10} getRowId={(data) => data.host_id} />
     </div>
   );
 };

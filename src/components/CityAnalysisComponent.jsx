@@ -10,6 +10,14 @@ import "./styles/CityAnalysisComponent.css";
 export default function CityAnalysisComponent() {
   const cityKpis = useContext(CityKpisContext);
 
+
+  const baseApiEndpoint = "https://caidam.freeddns.org/"
+
+  let hostsEndpoint = `${baseApiEndpoint}/top_hosts/${encodeURIComponent(cityKpis.city)}`;
+  if (cityKpis.neighbourhood && cityKpis.neighbourhood !== 'Total') {
+    hostsEndpoint += `/${encodeURIComponent(cityKpis.neighbourhood)}`;
+  }
+
   return (
       <div className="RSContent">
       <KpiSectionComponent
@@ -187,12 +195,13 @@ export default function CityAnalysisComponent() {
           />
           </div>}
       />
+
       <KpiSectionComponent
         title="Top Hosts"
         text=""
         kpis={<div></div>}
         graph={<div>
-          <DataTable apiUrl="https://caidam.freeddns.org/5_listings" />
+          <DataTable apiUrl={hostsEndpoint} />
         </div>}
       />
     </div>
