@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import "leaflet/dist/leaflet.css";
-import { MapContainer, TileLayer, useMap, Marker, Popup, Polygon } from 'react-leaflet';
+import { MapContainer, TileLayer, useMap, Marker, Popup } from 'react-leaflet';
 import { Icon } from "leaflet";
 import redDot from '../assets/red-dot.png';
 import blueDot from '../assets/blue-dot.png';
@@ -10,7 +10,6 @@ import "./styles/MapComponentStyle.css";
 
 import MarkerClusterGroup from '@changey/react-leaflet-markercluster';
 import '@changey/react-leaflet-markercluster/dist/styles.min.css';
-import { convex } from '@turf/turf';
 
 const ChangeView = ({ center }) => {
   const map = useMap();
@@ -43,9 +42,6 @@ const MapComponent = ({ selectedCity, selectedNeighbourhood }) => {
   const baseApiEndpoint = 'https://caidam.freeddns.org';
   const [mapCenter, setMapCenter] = useState([48.8588897, 2.3200410217200766]);
   const [markers, setMarkers] = useState([]);
-
-  const [polygonPoints, setPolygonPoints] = useState([]);
-
 
   // Add a new state variable for tracking loading state
   const [isLoading, setIsLoading] = useState(true);
@@ -85,14 +81,6 @@ const MapComponent = ({ selectedCity, selectedNeighbourhood }) => {
         const markersData = await markersResponse.json();
         if (!signal.aborted) {
           setMarkers(markersData);
-
-          // Calculate the convex hull of the markers
-          const hull = convex({ type: 'FeatureCollection', features: markersData.map(marker => ({ type: 'Feature', geometry: { type: 'Point', coordinates: [marker.longitude, marker.latitude] } })) });
-          if (hull) {
-            setPolygonPoints(hull.geometry.coordinates[0].map(([lng, lat]) => [lat, lng]));
-          }
-
-
         }
       } catch (markersError) {
         if (!signal.aborted) {
@@ -133,19 +121,7 @@ return (
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
 
-      <MarkerClusterGroup maxClusterRadius={zoom => {
-                                                if (zoom > 16) {
-                                                  return 0; // No border radius at high zoom levels
-                                                } else if (zoom > 14) {
-                                                  return 10; // Small border radius for medium-high zoom levels
-                                                } else if (zoom > 12) {
-                                                  return 18; // Medium border radius for medium zoom levels
-                                                } else if (zoom > 10) {
-                                                  return 40; // Medium border radius for medium zoom levels
-                                                } else {
-                                                  return 80; // Large border radius for low zoom levels
-                                                }
-                                              }} >
+      <MarkerClusterGroup >
 
         {markers.map((marker, index) => (
           <Marker
@@ -180,7 +156,6 @@ return (
             </Popup>
           </Marker>
         ))}
-        {polygonPoints.length > 0 && <Polygon positions={polygonPoints} color="blue" fillColor="rgba(0, 0, 0, 0.5)" weight={3} opacity={0.5} />}
 
       </MarkerClusterGroup >
     </MapContainer>
