@@ -40,7 +40,7 @@ const getCustomIcon = (roomType) => {
 };
 
 const MapComponent = ({ selectedCity, selectedNeighbourhood }) => {
-  const baseApiEndpoint = 'https://caidam.freeddns.org';
+  const baseApiEndpoint = `${import.meta.env.VITE_APP_API_BASE_URL}`;
   const [mapCenter, setMapCenter] = useState([48.8588897, 2.3200410217200766]);
   const [markers, setMarkers] = useState([]);
 

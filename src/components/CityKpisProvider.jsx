@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { CityKpisContext } from './CityKpisContext';
 
 export function CityKpisProvider({ children, selectedCity, selectedNeighbourhood }) {
-  const baseApiEndpoint = 'https://caidam.freeddns.org';
+  const baseApiEndpoint = `${import.meta.env.VITE_APP_API_BASE_URL}`;
   
   const [cityKpis, setCityKpis] = useState([]);
 

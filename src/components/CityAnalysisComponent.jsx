@@ -11,7 +11,7 @@ export default function CityAnalysisComponent() {
   const cityKpis = useContext(CityKpisContext);
 
 
-  const baseApiEndpoint = "https://caidam.freeddns.org/"
+  const baseApiEndpoint = `${import.meta.env.VITE_APP_API_BASE_URL}`
 
   let hostsEndpoint = `${baseApiEndpoint}/top_hosts/${encodeURIComponent(cityKpis.city)}`;
   if (cityKpis.neighbourhood && cityKpis.neighbourhood !== 'Total') {

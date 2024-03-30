@@ -2,7 +2,7 @@ import React from 'react';
 import DataFetchingComponent from './DataFetchingComponent';
 
 const TestFetchComponent = () => {
-  const apiEndpoint = 'https://caidam.freeddns.org/cities'; // Replace with your actual API endpoint
+  const apiEndpoint = `${import.meta.env.VITE_APP_API_BASE_URL}/cities`; // Replace with your actual API endpoint
 
   return (
     <>

@@ -7,7 +7,7 @@ const NeighbourhoodDropdownComponent = ({ selectedCity = 'Paris', onNeighbourhoo
 
   useEffect(() => {
     const fetchData = async () => {
-      const apiEndpoint = `https://caidam.freeddns.org/neighbourhoods/${encodeURIComponent(selectedCity)}`;
+      const apiEndpoint = `${import.meta.env.VITE_APP_API_BASE_URL}/neighbourhoods/${encodeURIComponent(selectedCity)}`;
 
       try {
         const response = await fetch(apiEndpoint);

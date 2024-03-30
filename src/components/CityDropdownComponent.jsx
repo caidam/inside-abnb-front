@@ -3,7 +3,7 @@ import Select from 'react-select';
 
 const CityDropdownComponent = ({ onCityChange }) => {
   // const apiEndpoint = 'http://127.0.0.1:5000/cities'; // Replace with the actual API endpoint for cities
-  const apiEndpoint = 'https://caidam.freeddns.org/cities';
+  const apiEndpoint = `${import.meta.env.VITE_APP_API_BASE_URL}/cities`;
 
   const [cities, setCities] = useState([]);
   const [selectedCity, setSelectedCity] = useState({ label: 'Paris', value: 'Paris' });
